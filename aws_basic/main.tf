@@ -16,9 +16,14 @@ provider "aws" {
   secret_key = "${var.aws_secret_key}"
 }
 
+resource "aws_subnet" "example" {
+  vpc_id            = "${data.aws_vpc.selected.id}"
+  availability_zone = "us-west-2a"
+  cidr_block        = "${cidrsubnet(data.aws_vpc.selected.cidr_block, 4, 1)}"
+}
+
 resource "aws_instance" "automic_default" {
   ami                    = "${var.aws_ami}"
-  vpc_id            = "${data.aws_vpc.selected.id}"
   instance_type          = "${var.instance_type}"
   vpc_security_group_ids = ["${var.aws_security_group_id}"]
   key_name	             = "AWS Default"
