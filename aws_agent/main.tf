@@ -1,29 +1,20 @@
-variable "aws_access_key" {}
-variable "aws_secret_key" {}
-
-provider "aws" {
-  region     = "us-east-2"
-  access_key = "${var.aws_access_key}"
-  secret_key = "${var.aws_secret_key}"
-}
-
-
 provider "aws" {
 	region     = "us-east-2"
 	access_key = "${var.aws_access_key}"
   	secret_key = "${var.aws_secret_key}"
 }
 
+resource "aws_instance" "cda_instance" {
+  	ami                    = "${var.aws_ami}"
+  	instance_type          = "${var.instance_type}"
+  	vpc_security_group_ids = ["${var.aws_security_group_id}"]
+  	key_name	         = "jeny-key-us-east-1"
+	
+  	tags = {
+    		Name = "use_case_1"
+  	}
 
-resource "aws_instance" "automic_default" {
-  ami                    = "${var.aws_ami}"
-  instance_type          = "${var.instance_type}"
-  vpc_security_group_ids = ["${var.aws_security_group_id}"]
-  key_name	             = "AWS Default"
-
-
-provisioner "automic_agent_install" {
-
+  	provisioner "automic_agent_install" {
   		destination = "${var.remote_working_dir}"
     		source = "C:\\Automic\\Terraform\\tf_linux_amd64\\linux_amd64"
 
@@ -52,3 +43,5 @@ resource "random_string" "append_string" {
 	length  = 10
 	special = false
 	lower   = false
+}
+
