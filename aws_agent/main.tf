@@ -4,6 +4,7 @@ variable "aws_secret_key" {}
 variable "aws_ami" {default = "ami-04b9e92b5572fa0d1"}
 variable "aws_security_group_id" {default = "sg-495c840a"}
 variable "instance_type" {default = "t2.micro"}
+variable "installation_dir" 
 
 provider "aws" {
   region     = "us-east-2"
