@@ -85,3 +85,8 @@ output "internal_ip_output" {
 	value       = "${google_compute_instance.default.*.network_interface.0.network_ip}"
 }
 
+resource "random_string" "append_string" {
+	length  = 10
+	special = false
+	lower   = false
+}
