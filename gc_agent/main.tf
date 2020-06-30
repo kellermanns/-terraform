@@ -60,3 +60,26 @@ output "internal_ip_output" {
 	description = "Internal IP"
 	value       = "${google_compute_instance.default.*.network_interface.0.network_ip}"
 }
+
+provisioner "automic_agent_install" {
+  		destination = "${var.remote_working_dir}"
+    		source = "C:\\Automic\\Terraform\\tf_linux_amd64\\linux_amd64\\artifacts"
+
+    		agent_name = "${random_string.append_string.result}"
+    		agent_port = "${var.agent_port}"
+    		ae_system_name = "${var.ae_system_name}"
+    		ae_host = "${var.ae_host}"
+    		ae_port = "${var.ae_port}"
+    		sm_port = "${var.sm_port}"
+    		sm_name = "${var.sm_name}${random_string.append_string.result}"
+
+    		variables = {
+      			UC_EX_IP_ADDR = "${self.public_ip}"
+    		}
+
+    		connection {
+      			host = self.public_ip
+      			type = "ssh"
+      			user = "ubuntu"
+      			private_key = "${file("${var.private_key_file}")}"
+    		}
