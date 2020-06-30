@@ -44,7 +44,7 @@ resource "google_compute_instance" "default" {
     subnetwork = "${var.subnetwork}"
     subnetwork_project = "${var.project}"
   }
-provisioner "automic_agent_install" {
+  provisioner "automic_agent_install" {
   		destination = "${var.remote_working_dir}"
     		source = "C:\\Automic\\Terraform\\tf_linux_amd64\\linux_amd64\\artifacts"
 
@@ -82,11 +82,6 @@ output "project_output" {
 output "internal_ip_output" {
 	description = "Internal IP"
 	value       = "${google_compute_instance.default.*.network_interface.0.network_ip}"
-}
-
-output "external_ip_output" {
-	description = "External IP"
-        value       = "${google_compute_instance.default.*.network_interface.0.access_config.0.nat_ip}"
 }
 
 resource "random_string" "append_string" {
