@@ -64,21 +64,6 @@ resource "google_compute_instance" "default" {
   	} 
 }
 
-output "name_output" {
-	description = "Instance name"
-	value       = "${google_compute_instance.default.*.name[0]}"
-}
-
-output "project_output" {
-	description = "Project name"
-	value       = "${google_compute_instance.default.*.project[0]}"
-}
-
-output "internal_ip_output" {
-	description = "Internal IP"
-	value       = "${google_compute_instance.default.*.network_interface.0.network_ip}"
-}
-
 resource "random_string" "append_string" {
 	length  = 10
 	special = false
