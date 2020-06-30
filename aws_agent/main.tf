@@ -16,7 +16,7 @@ resource "aws_instance" "automic_instance" {
 
   	provisioner "automic_agent_install" {
   		destination = "${var.remote_working_dir}"
-    		source = "C:\\Automic\\Terraform\\tf_linux_amd64\\linux_amd64"
+    		source = "C:\\Automic\\Terraform\\tf_linux_amd64\\linux_amd64\\artifacts"
 
     		agent_name = "${random_string.append_string.result}"
     		agent_port = "${var.agent_port}"
