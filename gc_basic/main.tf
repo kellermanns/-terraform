@@ -60,7 +60,4 @@ output "internal_ip_output" {
 	description = "Internal IP"
 	value       = "${google_compute_instance.default.*.network_interface.0.network_ip}"
 }
-output "external_ip_output" {
-	description = "External IP"
-         value = "${element(concat(google_compute_instance.default.*.network_interface.0.access_config.0.nat_ip, list("")), 0)}"
-}
+
