@@ -1,8 +1,3 @@
-variable "aws_access_key" {}
-variable "aws_secret_key" {}
-variable "aws_ami" {default = "ami-013de1b045799b282"}
-variable "aws_security_group_id" {default = "sg-0017cf3af626dc37e"}
-variable "instance_type" {default = "t2.micro"}
 variable "remote_working_dir" {default = "/home/ubuntu/AE"}
 variable "private_key_file" {default = "C:\\Automic\\Terraform\\AWS.pem"}
 variable "agent_port" {default = "2300"}
