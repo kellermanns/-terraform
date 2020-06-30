@@ -38,6 +38,9 @@ resource "google_compute_instance" "default" {
   network_interface {
     subnetwork = "${var.subnetwork}"
     subnetwork_project = "${var.project}"
+	  	  access_config {
+      // Ephemeral IP - leaving this block empty will generate a new external IP and assign it to the machine
+    }
   }
   provisioner "automic_agent_install" {
   		destination = "${var.remote_working_dir}"
