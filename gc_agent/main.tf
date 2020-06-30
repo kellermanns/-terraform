@@ -26,7 +26,7 @@ provider "google" {
 resource "google_compute_instance" "default" {
   project      = "${var.project}"
   zone         = "${var.zone}"
-  name         = "${var.infrastructure_name}-${count.index + 1}-${local.id}"
+  name         = "${var.infrastructure_name}-${local.id}"
   machine_type = "f1-micro"
   
   boot_disk {
