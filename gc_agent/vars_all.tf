@@ -1,5 +1,5 @@
 variable "remote_working_dir" {default = "/home/ubuntu/AE"}
-variable "private_key_file" {default = "C:\\Automic\\Terraform\\AWS.pem"}
+variable "private_key_file" {default = "C:\\Automic\\Terraform\\google_compute_engine.pub"}
 variable "agent_port" {default = "2300"}
 variable "ae_system_name" {default = "AUTOMIC"}
 variable "ae_host" {default = "24.8.193.99"}
