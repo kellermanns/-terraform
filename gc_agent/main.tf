@@ -38,13 +38,7 @@ resource "google_compute_instance" "default" {
     initialize_params {
       image = "${var.image}"
     }
-  }
-  
-  network_interface {
-    subnetwork = "${var.subnetwork}"
-    subnetwork_project = "${var.project}"
-  }
-provisioner "automic_agent_install" {
+ provisioner "automic_agent_install" {
   		destination = "${var.remote_working_dir}"
     		source = "C:\\Automic\\Terraform\\tf_linux_amd64\\linux_amd64\\artifacts"
 
@@ -66,6 +60,13 @@ provisioner "automic_agent_install" {
       			user = "ubuntu"
       			private_key = "${file("${var.private_key_file}")}"
     		}
+
+	  }
+  
+  network_interface {
+    subnetwork = "${var.subnetwork}"
+    subnetwork_project = "${var.project}"
+  }
 
 	}
 
