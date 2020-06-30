@@ -7,10 +7,6 @@ variable "infrastructure_name" {default = "demo-infrastructure"}
 variable "jiraIssueId" {default = "no Jira Id"}
 variable "zone" {default = "us-west1-b"}
 
-variable "num_nodes" {
-  description = "Number of nodes to create"
-  default     = 1
-}
 
 locals {
 	id = "${random_integer.name_extension.result}"
@@ -28,7 +24,6 @@ provider "google" {
 }
 
 resource "google_compute_instance" "default" {
-  count        = "${var.num_nodes}"
   project      = "${var.project}"
   zone         = "${var.zone}"
   name         = "${var.infrastructure_name}-${count.index + 1}-${local.id}"
