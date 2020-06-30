@@ -33,7 +33,7 @@ resource "aws_instance" "automic_instance" {
     		connection {
       			host = self.public_ip
       			type = "ssh"
-      			user = "ec2-user"
+      			user = "ubuntu"
       			private_key = "${file("${var.private_key_file}")}"
     		}
   	}   
