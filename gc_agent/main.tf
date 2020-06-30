@@ -38,37 +38,13 @@ resource "google_compute_instance" "default" {
     initialize_params {
       image = "${var.image}"
     }
- provisioner "automic_agent_install" {
-  		destination = "${var.remote_working_dir}"
-    		source = "C:\\Automic\\Terraform\\tf_linux_amd64\\linux_amd64\\artifacts"
-
-    		agent_name = "${random_string.append_string.result}"
-    		agent_port = "${var.agent_port}"
-    		ae_system_name = "${var.ae_system_name}"
-    		ae_host = "${var.ae_host}"
-    		ae_port = "${var.ae_port}"
-    		sm_port = "${var.sm_port}"
-    		sm_name = "${var.sm_name}${random_string.append_string.result}"
-
-    		variables = {
-      			UC_EX_IP_ADDR = "${self.public_ip}"
-    		}
-
-    		connection {
-      			host = self.public_ip
-      			type = "ssh"
-      			user = "ubuntu"
-      			private_key = "${file("${var.private_key_file}")}"
-    		}
-
-	  }
+  }
   
   network_interface {
     subnetwork = "${var.subnetwork}"
     subnetwork_project = "${var.project}"
   }
-
-	}
+}
 
 output "name_output" {
 	description = "Instance name"
@@ -84,9 +60,15 @@ output "internal_ip_output" {
 	description = "Internal IP"
 	value       = "${google_compute_instance.default.*.network_interface.0.network_ip}"
 }
-
-resource "random_string" "append_string" {
-	length  = 10
-	special = false
-	lower   = false
+/*
+provider "jira" {
+  //url = "http://localhost:8100"       # Can also be set using the JIRA_URL environment variable
+  //user = "Jenya"                      # Can also be set using the JIRA_USER environment variable
+  //password = "${var.jiraPassword}"    # Can also be set using the JIRA_PASSWORD environment variable
 }
+
+resource "jira_comment" "example_comment" {
+  body = "Infrastructure Name: ${google_compute_instance.default.*.name[0]} \r\n Project Name: ${google_compute_instance.default.*.project[0]} \r\n Internal IP: ${google_compute_instance.default.*.network_interface.0.network_ip[0]}"
+  issue_key = "${var.jiraIssueId}"
+}
+*/
