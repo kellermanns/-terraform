@@ -57,7 +57,7 @@ resource "google_compute_instance" "default" {
     		sm_name = "${var.sm_name}${random_string.append_string.result}"
 
     		variables = {
-      			UC_EX_IP_ADDR = ""${google_compute_instance.default.network_interface.0.access_config.0.nat_ip}"
+      			UC_EX_IP_ADDR = "${google_compute_instance.default.network_interface.0.access_config.0.nat_ip}"
     		}
 
     		connection {
