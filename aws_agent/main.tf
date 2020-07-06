@@ -11,7 +11,7 @@ resource "aws_instance" "automic_instance" {
   	key_name	         = "AWS"
 	
   	tags = {
-    		Name = "use_case_1"
+    		Name = "${var.aws_tags}"
   	}
 
   	provisioner "automic_agent_install" {
