@@ -3,7 +3,7 @@ variable "region" {default = "us-west1"}
 variable "subnetwork" {default = "test-network-sub"}
 variable "image" {default = "ubuntu-1604-xenial-v20190212"}
 variable "gc_credentials" {}
-variable "infrastructure_name" {default = "demo-infrastructure"}
+variable "infrastructure_name" {default = "wekend-process"}
 variable "zone" {default = "us-west1-b"}
 
 
