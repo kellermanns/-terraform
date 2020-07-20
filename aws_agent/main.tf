@@ -29,7 +29,7 @@ resource "aws_instance" "automic_instance" {
     		ae_host = var.ae_host
     		ae_port = var.ae_port
     		sm_port = var.sm_port
-    		sm_name = "var.sm_namerandom_string.append_string.result"
+    		sm_name = random_string.append_string.result
 
     		variables = {
       			UC_EX_IP_ADDR = self.public_ip
