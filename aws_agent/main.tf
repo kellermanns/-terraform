@@ -5,10 +5,6 @@ provider "aws" {
 	version = "~> 2.70"
 }
 
-provider "random" {
-	version = "~> 2.30"
-}
-
 resource "aws_instance" "automic_instance" {
   	ami                    = var.aws_ami
   	instance_type          = var.instance_type
@@ -48,6 +44,5 @@ resource "random_string" "append_string" {
 	length  = 10
 	special = false
 	lower   = false
-	version = "~> 2.3"
 }
 
