@@ -1,14 +1,8 @@
-terraform {
-  required_providers {
-    aws = "~> 2.70"
-    random = "~> 2.3"
-  }
-}
-
 provider "aws" {
 	region     = "us-east-2"
 	access_key = var.aws_access_key
         secret_key = var.aws_secret_key
+	version = "~> 2.70"
 }
 
 resource "aws_instance" "automic_instance" {
@@ -50,5 +44,6 @@ resource "random_string" "append_string" {
 	length  = 10
 	special = false
 	lower   = false
+	version = "~> 2.3"
 }
 
