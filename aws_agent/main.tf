@@ -1,3 +1,6 @@
+* provider.aws: version = "~> 2.70"
+* provider.random: version = "~> 2.3"
+
 provider "aws" {
 	region     = "us-east-2"
 	access_key = var.aws_access_key
@@ -7,6 +10,7 @@ provider "aws" {
 resource "aws_instance" "automic_instance" {
   	ami                    = var.aws_ami
   	instance_type          = var.instance_type
+	vpc_security_group_ids = var.aws_security_group_id
   	key_name	         = "AWS"
 	
   	tags = {
@@ -33,7 +37,7 @@ resource "aws_instance" "automic_instance" {
       			host = self.public_ip
       			type = "ssh"
       			user = "ubuntu"
-      			private_key = "${file(var.private_key_file)}"
+      			private_key = file(var.private_key_file)
     		}
   	}   
 }
