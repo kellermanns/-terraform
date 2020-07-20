@@ -1,3 +1,10 @@
+terraform {
+  required_providers {
+    aws = "~> 2.70"
+    random = "~> 2.3"
+  }
+}
+
 provider "aws" {
 	region     = "us-east-2"
 	access_key = var.aws_access_key
