@@ -1,6 +1,6 @@
-variable "aws_access_key" {}
+mvariable "aws_access_key" {}
 variable "aws_secret_key" {}
-variable "aws_tags" {default = "small-sales-data"}
+variable "aws_tags" {default = "medium-sales-data"}
 variable "aws_ami" {default = "ami-00399ec92321828f5"}
 variable "aws_security_group_id" {default = "sg-d28317bb"}
 variable "instance_type" {default = "t2.micro"}
