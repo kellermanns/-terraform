@@ -1,4 +1,4 @@
-mvariable "aws_access_key" {}
+variable "aws_access_key" {}
 variable "aws_secret_key" {}
 variable "aws_tags" {default = "medium-sales-data"}
 variable "aws_ami" {default = "ami-00399ec92321828f5"}
